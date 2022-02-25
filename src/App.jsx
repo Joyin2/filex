@@ -2,7 +2,7 @@ import { useState } from 'react';
 import FilePreviewer from 'react-file-previewer';
 import {FilePreviewerThumbnail} from 'react-file-previewer';
 import VideoPreview from './VideoPreview';
- 
+
  const App = () => {
     const [file, setFile] = useState({ url: "" });
     const [fileName, setFileName] = useState("");
@@ -18,9 +18,10 @@ import VideoPreview from './VideoPreview';
         };
         fileReader.readAsDataURL(file);
     };
- 
+
     return (
-        <div>
+        <div className="container">
+            <div>
             <h1>File Previewer</h1>
             <input type="file" onChange={onFileChange} />
    { file.url && <>
@@ -32,6 +33,7 @@ import VideoPreview from './VideoPreview';
         />
             }
             </>}
+        </div>
         </div>
     )
 };
