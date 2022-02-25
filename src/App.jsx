@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import FilePreviewer from 'react-file-previewer';
-import {FilePreviewerThumbnail} from 'react-file-previewer';
+import { FilePreviewerThumbnail } from 'react-file-previewer';
 import VideoPreview from './VideoPreview';
 
- const App = () => {
+const App = () => {
     const [file, setFile] = useState({ url: "" });
     const [fileName, setFileName] = useState("");
-    
+
     const onFileChange = event => {
         const fileReader = new FileReader();
         const file = event.target.files[0];
-        
+
         fileReader.onload = fileLoad => {
             const { result } = fileLoad.target;
             setFileName(file.type)
@@ -20,21 +20,21 @@ import VideoPreview from './VideoPreview';
     };
 
     return (
+
         <div className="container">
-            <div>
             <h1>File Previewer</h1>
-            <input type="file" onChange={onFileChange} />
-   { file.url && <>
-            {fileName.includes("video") ?
-            <VideoPreview file={file.url}/>
-            :
-                  <FilePreviewerThumbnail 
-            file={file}
-        />
-            }
+            <input className='sizefile' type="file" onChange={onFileChange} />
+            {file.url && <>
+                {fileName.includes("video") ?
+                    <VideoPreview file={file.url} />
+                    :
+                    <FilePreviewerThumbnail
+                        file={file}
+                    />
+                }
             </>}
         </div>
-        </div>
+
     )
 };
 
